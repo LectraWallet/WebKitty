@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>PS4 Jailbreak - @lando._497 &amp; @consolemodd1nghq</title>
+    <title>Glock JB build 1a9b</title>
     <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
     <meta name="author" content="ArabPixel, @lando._497, @consolemodd1nghq">
     <meta name="keywords"
@@ -13,7 +13,7 @@
 
     <!-- Facebook / Discord / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PS4 Jailbreak - @lando._497 & @consolemodd1nghq">
+    <meta property="og:title" content="Glock JB build 1a9b">
     <meta property="og:description"
         content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
     <meta property="og:image" content="./includes/assets/icons/webkitty.svg">
@@ -21,7 +21,7 @@
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="PS4 Jailbreak - @lando._497 & @consolemodd1nghq">
+    <meta name="twitter:title" content="Glock JB build 1a9b">
     <meta name="twitter:description"
         content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
     <meta name="twitter:image" content="./includes/assets/icons/webkitty.svg">
@@ -46,6 +46,14 @@
     #customCredits .customCreditTitle{font-weight:800;color:#fff;}
     .customFooter{max-width:640px;margin:18px auto;padding:14px;text-align:center;color:#d1d5db;font-size:14px;line-height:1.7;}
     .customFooter a{color:#60a5fa;}
+    /* Glock JB: let screens grow past 100vh so the custom panel never overlaps (fixes iPhone) */
+    #initial-screen{height:auto !important;min-height:100vh;justify-content:flex-start !important;padding-top:96px !important;padding-bottom:56px !important;}
+    #exploit-main-screen{height:auto !important;min-height:100vh;}
+    #exploitContainer{height:auto !important;min-height:100vh;}
+    #customPanel{box-sizing:border-box;}
+    .glockTitle{color:#fff;font-size:28px;font-weight:800;line-height:1.2;margin:0 0 4px;}
+    .glockBuild{color:#93c5fd;font-size:14px;font-weight:700;margin:0 0 14px;}
+    #choosejb-initial{width:100%;max-width:640px;box-sizing:border-box;margin-top:16px;}
     </style>
     <script>
         // Prevent "Theme Flash" by applying the href before the body renders
@@ -140,6 +148,8 @@
 
             <!-- Custom host panel: version selector, START, console/logs, credits -->
             <div id="customPanel">
+                <div class="glockTitle">Glock JB</div>
+                <div class="glockBuild">build 1a9b</div>
                 <label for="customFwSelect">Firmware version</label>
                 <select id="customFwSelect">
                                 <option value="14.02" selected>14.02</option>
@@ -499,7 +509,7 @@
         </section>
 
         <div class="customFooter">
-            Custom host by <a href="https://www.tiktok.com/@lando._497">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq">@consolemodd1nghq</a> on TikTok &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP">discord.gg/wSgwmhjXNP</a><br>
+            Glock JB build 1a9b &mdash; Custom host by <a href="https://www.tiktok.com/@lando._497">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq">@consolemodd1nghq</a> on TikTok &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP">discord.gg/wSgwmhjXNP</a><br>
             GoldHEN by SiSTRo &middot; WebKitty by ArabPixel &middot; Afterglow by m0zz &middot; Based on <a href="https://github.com/ArabPixel/WebKitty">ArabPixel/WebKitty</a> (AGPL-3.0). Exploit files untouched.
         </div>
     </main>
@@ -509,8 +519,8 @@
     <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden"
         id="about-popup-overlay">
         <div id="about-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
-            <h2 class="text-2xl font-bold">About WebKitty</h2>
-                <p>Custom host by <a href="https://www.tiktok.com/@lando._497" style="color:#60a5fa;">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq" style="color:#60a5fa;">@consolemodd1nghq</a> &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP" style="color:#60a5fa;">discord.gg/wSgwmhjXNP</a></p>
+            <h2 class="text-2xl font-bold">About Glock JB</h2>
+                <p>Glock JB build 1a9b &mdash; Custom host by <a href="https://www.tiktok.com/@lando._497" style="color:#60a5fa;">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq" style="color:#60a5fa;">@consolemodd1nghq</a> &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP" style="color:#60a5fa;">discord.gg/wSgwmhjXNP</a></p>
             <div class="space-y-2 text-white/80">
                 <p>Version: 2.0</p>
                 <p>A feature rich exploit host to jailbreak your PS4</p>
