@@ -35,8 +35,6 @@
     #customPanel label{display:block;color:#e5e7eb;font-weight:700;margin-bottom:8px;}
     #customFwSelect{width:100%;padding:10px;font-size:18px;background:#111827;color:#fff;border:1px solid #4b5563;border-radius:8px;text-align:center;}
     #customFwNote{color:#9ca3af;font-size:13px;margin:8px 0 0;}
-    #customStartBtn{width:100%;margin-top:14px;padding:14px;font-size:20px;font-weight:800;color:#fff;background:#2563eb;border:0;border-radius:10px;cursor:pointer;}
-    #customStartBtn:active{background:#1d4ed8;}
     #customLogBox{margin-top:14px;text-align:left;}
     #customLogBox .customLogTitle{color:#e5e7eb;font-weight:700;margin-bottom:6px;}
     #customLogMirror{background:#000;color:#e5e7eb;font-family:monospace;font-size:12px;white-space:pre-wrap;word-break:break-word;border-radius:8px;padding:10px;height:180px;overflow-y:auto;margin:0;}
@@ -231,7 +229,6 @@
                                 <option value="4.50">4.50</option>
                 </select>
                 <p id="customFwNote">Default: 14.02. On a PS4 the detected firmware wins - picking a different version than your console will fail.</p>
-                <button id="customStartBtn" type="button">START</button>
                 <div id="customLogBox">
                     <div class="customLogTitle">Console / Logs</div>
                     <pre id="customLogMirror">Waiting... Press START on your PS4.</pre>
@@ -1025,45 +1022,9 @@
             }
             setStatus("Selected: " + picked);
         }
-        function onStart() {
-            glockShoot();
-            var det = detectedFw();
-            try {
-                if (typeof isPS4Console === "function" && !isPS4Console() && !window.devMode) {
-                    var dst = el("customLogMirror");
-                    if (dst) dst.textContent = "Open this page in the PS4 browser to run it.\nThis device is not a PS4.\nDetected firmware selector default: " + DEFAULT_FW;
-                    setStatus("Not a PS4 - preview only.");
-                    return;
-                }
-            } catch (e) {}
-            var sel = el("customFwSelect");
-            var picked = sel ? sel.value : DEFAULT_FW;
-            /* On a real PS4 the detected firmware wins, even if the selector differs. */
-            if (det) {
-                if (sel && sel.value !== det) {
-                    var hasOpt = false;
-                    for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === det) hasOpt = true; }
-                    if (hasOpt) sel.value = det;
-                }
-                picked = det;
-            }
-            applyChain(picked);
-            if (typeof user !== "undefined" && user.blockJailbreak) return;
-            try {
-                if (typeof user !== "undefined") user.blockJailbreak = true;
-                if (typeof chooseHEN === "function") chooseHEN();
-                var box = el("customLogBox");
-                if (box && box.scrollIntoView) { try { box.scrollIntoView(); } catch (e2) {} }
-                if (typeof jailbreak === "function") jailbreak();
-            } catch (err) {
-                try { if (typeof user !== "undefined") user.blockJailbreak = false; } catch (e3) {}
-                if (typeof log === "function") log("Start failed: " + (err && err.message ? err.message : err), "red");
-            }
-        }
         function init() {
             var sel = el("customFwSelect");
-            var btn = el("customStartBtn");
-            if (!sel || !btn) return;
+            if (!sel) return;
             var det = detectedFw();
             if (det) {
                 for (var i = 0; i < sel.options.length; i++) {
@@ -1079,8 +1040,6 @@
             applyChain(sel.value);
             if (sel.addEventListener) sel.addEventListener("change", onFwChange, false);
             else sel.onchange = onFwChange;
-            if (btn.addEventListener) btn.addEventListener("click", onStart, false);
-            else btn.onclick = onStart;
             var glock = el("ps-logo-container");
             if (glock) {
                 if (glock.addEventListener) glock.addEventListener("click", glockShoot, false);
