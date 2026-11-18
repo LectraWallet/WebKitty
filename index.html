@@ -4,30 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>WebKitty</title>
+    <title>PS4 Jailbreak - @lando._497 &amp; @consolemodd1nghq</title>
     <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
-    <meta name="author" content="ArabPixel">
+    <meta name="author" content="ArabPixel, @lando._497, @consolemodd1nghq">
     <meta name="keywords"
         content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
 
 
     <!-- Facebook / Discord / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="WebKitty">
+    <meta property="og:title" content="PS4 Jailbreak - @lando._497 & @consolemodd1nghq">
     <meta property="og:description"
         content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
-    <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
-    <meta property="og:url" content="http://webkitty.arabpixel.net">
+    <meta property="og:image" content="./includes/assets/icons/webkitty.svg">
+    <meta property="og:url" content="./">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="WebKitty">
+    <meta name="twitter:title" content="PS4 Jailbreak - @lando._497 & @consolemodd1nghq">
     <meta name="twitter:description"
         content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
-    <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
+    <meta name="twitter:image" content="./includes/assets/icons/webkitty.svg">
     <link rel="icon" href="./includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
+
+    <style>
+    /* Custom host UI - inlined so firmware manifests still cover this page */
+    #customPanel{background:#1f2937;border:1px solid #374151;border-radius:12px;padding:16px;margin:16px auto 0;max-width:640px;width:100%;text-align:center;}
+    #customPanel label{display:block;color:#e5e7eb;font-weight:700;margin-bottom:8px;}
+    #customFwSelect{width:100%;padding:10px;font-size:18px;background:#111827;color:#fff;border:1px solid #4b5563;border-radius:8px;text-align:center;}
+    #customFwNote{color:#9ca3af;font-size:13px;margin:8px 0 0;}
+    #customStartBtn{width:100%;margin-top:14px;padding:14px;font-size:20px;font-weight:800;color:#fff;background:#2563eb;border:0;border-radius:10px;cursor:pointer;}
+    #customStartBtn:active{background:#1d4ed8;}
+    #customLogBox{margin-top:14px;text-align:left;}
+    #customLogBox .customLogTitle{color:#e5e7eb;font-weight:700;margin-bottom:6px;}
+    #customLogMirror{background:#000;color:#e5e7eb;font-family:monospace;font-size:12px;white-space:pre-wrap;word-break:break-word;border-radius:8px;padding:10px;height:180px;overflow-y:auto;margin:0;}
+    #customStatus{color:#93c5fd;font-size:13px;margin:8px 0 0;min-height:18px;}
+    #customCredits{margin-top:14px;color:#d1d5db;font-size:14px;line-height:1.7;}
+    #customCredits a{color:#60a5fa;}
+    #customCredits .customCreditTitle{font-weight:800;color:#fff;}
+    .customFooter{max-width:640px;margin:18px auto;padding:14px;text-align:center;color:#d1d5db;font-size:14px;line-height:1.7;}
+    .customFooter a{color:#60a5fa;}
+    </style>
     <script>
         // Prevent "Theme Flash" by applying the href before the body renders
         var savedTheme = localStorage.getItem('theme') || "index";
@@ -44,19 +63,7 @@
         else
             document.dir = "ltr";
 
-        // redirect to http request
-        var goToHttps = localStorage.getItem("dontHTTPS") != "1";
-        var isThisPS4 = navigator.userAgent.indexOf("PlayStation 4") !== -1;
-        var isLocalServer =  /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(window.location.hostname);
-        var isCurrentHTTPS = window.location.protocol === 'https:';
-        if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS){
-            if (confirm("You are currently using HTTPS, which prevents loading payloads through a bin/elf loader servers, switch to http instead? (recommended)")){
-                window.abortLoading = true;
-                window.location.href = "http://webkitty.arabpixel.net";
-            } else{
-                localStorage.setItem("dontHTTPS", "1");
-            }
-        }
+        // Custom host: no redirect to the original WebKitty domain.
     </script>
 </head>
 
@@ -130,6 +137,79 @@
 
             <!-- Compatibility message -->
             <p id="PS4FW" class="text-white/70 text-lg mt-4 mb-6">-</p>
+
+            <!-- Custom host panel: version selector, START, console/logs, credits -->
+            <div id="customPanel">
+                <label for="customFwSelect">Firmware version</label>
+                <select id="customFwSelect">
+                                <option value="14.02" selected>14.02</option>
+                                <option value="14.00">14.00</option>
+                                <option value="13.52">13.52</option>
+                                <option value="13.50">13.50</option>
+                                <option value="13.04">13.04</option>
+                                <option value="13.02">13.02</option>
+                                <option value="13.00">13.00</option>
+                                <option value="12.52">12.52</option>
+                                <option value="12.50">12.50</option>
+                                <option value="12.02">12.02</option>
+                                <option value="12.00">12.00</option>
+                                <option value="11.52">11.52</option>
+                                <option value="11.50">11.50</option>
+                                <option value="11.02">11.02</option>
+                                <option value="11.00">11.00</option>
+                                <option value="10.71">10.71</option>
+                                <option value="10.70">10.70</option>
+                                <option value="10.50">10.50</option>
+                                <option value="10.01">10.01</option>
+                                <option value="10.00">10.00</option>
+                                <option value="9.60">9.60</option>
+                                <option value="9.51">9.51</option>
+                                <option value="9.50">9.50</option>
+                                <option value="9.04">9.04</option>
+                                <option value="9.03">9.03</option>
+                                <option value="9.00">9.00</option>
+                                <option value="8.52">8.52</option>
+                                <option value="8.50">8.50</option>
+                                <option value="8.03">8.03</option>
+                                <option value="8.01">8.01</option>
+                                <option value="8.00">8.00</option>
+                                <option value="7.55">7.55</option>
+                                <option value="7.51">7.51</option>
+                                <option value="7.50">7.50</option>
+                                <option value="7.02">7.02</option>
+                                <option value="7.01">7.01</option>
+                                <option value="7.00">7.00</option>
+                                <option value="6.72">6.72</option>
+                                <option value="6.71">6.71</option>
+                                <option value="6.70">6.70</option>
+                                <option value="5.07">5.07</option>
+                                <option value="5.05">5.05</option>
+                                <option value="5.03">5.03</option>
+                                <option value="5.01">5.01</option>
+                                <option value="5.00">5.00</option>
+                                <option value="4.74">4.74</option>
+                                <option value="4.73">4.73</option>
+                                <option value="4.72">4.72</option>
+                                <option value="4.71">4.71</option>
+                                <option value="4.70">4.70</option>
+                                <option value="4.55">4.55</option>
+                                <option value="4.50">4.50</option>
+                </select>
+                <p id="customFwNote">Default: 14.02. On a PS4 the detected firmware wins - picking a different version than your console will fail.</p>
+                <button id="customStartBtn" type="button">START</button>
+                <div id="customLogBox">
+                    <div class="customLogTitle">Console / Logs</div>
+                    <pre id="customLogMirror">Waiting... Press START on your PS4.</pre>
+                    <p id="customStatus"></p>
+                </div>
+                <div id="customCredits">
+                    <div class="customCreditTitle">Credits</div>
+                    <div>Custom host by <a href="https://www.tiktok.com/@lando._497">TikTok @lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq">TikTok @consolemodd1nghq</a></div>
+                    <div>Discord: <a href="https://discord.gg/wSgwmhjXNP">discord.gg/wSgwmhjXNP</a></div>
+                    <div>GoldHEN by SiSTRo &middot; WebKitty by ArabPixel &middot; Afterglow by m0zz</div>
+                    <div>Exploit code: <a href="https://github.com/ArabPixel/WebKitty">ArabPixel/WebKitty</a> (AGPL-3.0) &middot; <a href="https://github.com/GoldHEN/GoldHEN">GoldHEN/GoldHEN</a></div>
+                </div>
+            </div>
             <a class="hidden secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
                 href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
                 <button
@@ -417,6 +497,11 @@
                 </div>
             </div>
         </section>
+
+        <div class="customFooter">
+            Custom host by <a href="https://www.tiktok.com/@lando._497">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq">@consolemodd1nghq</a> on TikTok &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP">discord.gg/wSgwmhjXNP</a><br>
+            GoldHEN by SiSTRo &middot; WebKitty by ArabPixel &middot; Afterglow by m0zz &middot; Based on <a href="https://github.com/ArabPixel/WebKitty">ArabPixel/WebKitty</a> (AGPL-3.0). Exploit files untouched.
+        </div>
     </main>
 
 
@@ -425,6 +510,7 @@
         id="about-popup-overlay">
         <div id="about-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
             <h2 class="text-2xl font-bold">About WebKitty</h2>
+                <p>Custom host by <a href="https://www.tiktok.com/@lando._497" style="color:#60a5fa;">@lando._497</a> &amp; <a href="https://www.tiktok.com/@consolemodd1nghq" style="color:#60a5fa;">@consolemodd1nghq</a> &middot; Discord: <a href="https://discord.gg/wSgwmhjXNP" style="color:#60a5fa;">discord.gg/wSgwmhjXNP</a></p>
             <div class="space-y-2 text-white/80">
                 <p>Version: 2.0</p>
                 <p>A feature rich exploit host to jailbreak your PS4</p>
@@ -827,6 +913,126 @@
             }
         });
     </script>
+
+    <script>
+    /* Custom host logic - ES5 only. Uses WebKitty's own jailbreak(), chain + HEN helpers. No exploit code changed. */
+    (function () {
+        var DEFAULT_FW = "14.02";
+        var mirrorTimer = null;
+        var lastMirror = "";
+        function el(id) { return document.getElementById(id); }
+        function detectedFw() {
+            try { if (typeof getPs4FwVersion === "function") return getPs4FwVersion(); } catch (e) {}
+            return null;
+        }
+        function mirrorTick() {
+            try {
+                var src = el("console");
+                var dst = el("customLogMirror");
+                if (src && dst) {
+                    var html = src.innerHTML;
+                    if (html !== lastMirror) { lastMirror = html; dst.innerHTML = html; dst.scrollTop = dst.scrollHeight; }
+                }
+                var st = el("state");
+                var cs = el("customStatus");
+                if (st && cs && cs.textContent !== st.textContent) cs.textContent = st.textContent;
+            } catch (e) {}
+        }
+        function setStatus(msg) { var cs = el("customStatus"); if (cs) cs.textContent = msg; }
+        function applyChain(fwStr) {
+            try {
+                var fwNum = parseFloat(fwStr);
+                if (isNaN(fwNum)) return false;
+                if (typeof getDefaultChain !== "function") return false;
+                var chain = getDefaultChain(fwNum);
+                if (chain === null || chain === undefined) {
+                    if (typeof log === "function") log("No exploit chain for firmware " + fwStr, "red");
+                    return false;
+                }
+                if (typeof exploitChain === "function") exploitChain(chain);
+                if (typeof loadExploitChain === "function") loadExploitChain();
+                if (typeof updateExploitChainVisibility === "function") updateExploitChainVisibility(fwStr);
+                if ((fwStr === "14.02" || fwStr === "14.00") && typeof setGoldHENVer === "function") {
+                    try { setGoldHENVer("GHv2.4b18.14"); } catch (e2) {}
+                }
+                return true;
+            } catch (e) { return false; }
+        }
+        function onFwChange() {
+            var sel = el("customFwSelect");
+            if (!sel) return;
+            var picked = sel.value;
+            var det = detectedFw();
+            applyChain(picked);
+            if (det && det !== picked && typeof log === "function") {
+                log("Warning: detected firmware is " + det + ", selected " + picked + " may fail. Use the detected version.", "orange");
+            }
+            setStatus("Selected: " + picked);
+        }
+        function onStart() {
+            var det = detectedFw();
+            try {
+                if (typeof isPS4Console === "function" && !isPS4Console() && !window.devMode) {
+                    var dst = el("customLogMirror");
+                    if (dst) dst.textContent = "Open this page in the PS4 browser to run it.\nThis device is not a PS4.\nDetected firmware selector default: " + DEFAULT_FW;
+                    setStatus("Not a PS4 - preview only.");
+                    return;
+                }
+            } catch (e) {}
+            var sel = el("customFwSelect");
+            var picked = sel ? sel.value : DEFAULT_FW;
+            /* On a real PS4 the detected firmware wins, even if the selector differs. */
+            if (det) {
+                if (sel && sel.value !== det) {
+                    var hasOpt = false;
+                    for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === det) hasOpt = true; }
+                    if (hasOpt) sel.value = det;
+                }
+                picked = det;
+            }
+            applyChain(picked);
+            if (typeof user !== "undefined" && user.blockJailbreak) return;
+            try {
+                if (typeof user !== "undefined") user.blockJailbreak = true;
+                if (typeof chooseHEN === "function") chooseHEN();
+                var box = el("customLogBox");
+                if (box && box.scrollIntoView) { try { box.scrollIntoView(); } catch (e2) {} }
+                if (typeof jailbreak === "function") jailbreak();
+            } catch (err) {
+                try { if (typeof user !== "undefined") user.blockJailbreak = false; } catch (e3) {}
+                if (typeof log === "function") log("Start failed: " + (err && err.message ? err.message : err), "red");
+            }
+        }
+        function init() {
+            var sel = el("customFwSelect");
+            var btn = el("customStartBtn");
+            if (!sel || !btn) return;
+            var det = detectedFw();
+            if (det) {
+                for (var i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].value === det) { sel.value = det; break; }
+                }
+                var note = el("customFwNote");
+                if (note) note.textContent = "Detected firmware: " + det + ". Selector defaults to 14.02 on other devices.";
+                setStatus("Detected: " + det);
+            } else {
+                sel.value = DEFAULT_FW;
+                setStatus("Preview mode - default: 14.02. Open on PS4 to run.");
+            }
+            applyChain(sel.value);
+            if (sel.addEventListener) sel.addEventListener("change", onFwChange, false);
+            else sel.onchange = onFwChange;
+            if (btn.addEventListener) btn.addEventListener("click", onStart, false);
+            else btn.onclick = onStart;
+            mirrorTimer = setInterval(mirrorTick, 400);
+            mirrorTick();
+        }
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init, false);
+        } else { init(); }
+    })();
+    </script>
+
 </body>
 
 </html>
