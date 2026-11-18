@@ -54,6 +54,22 @@
     .glockTitle{color:#fff;font-size:28px;font-weight:800;line-height:1.2;margin:0 0 4px;}
     .glockBuild{color:#93c5fd;font-size:14px;font-weight:700;margin:0 0 14px;}
     #choosejb-initial{width:100%;max-width:640px;box-sizing:border-box;margin-top:16px;}
+    #ps-logo-container{width:min(430px,88vw);padding:26px 22px!important;border-radius:24px!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10);box-shadow:0 10px 30px rgba(0,0,0,.35);box-sizing:border-box;}
+    #ps-logo-container:hover{box-shadow:0 0 0 2px rgba(59,130,246,.35),0 14px 34px rgba(0,0,0,.4);}
+    #ps-logo{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));-webkit-transform-origin:28% 72%;transform-origin:28% 72%;}
+    .glock-flash,.glock-bullet,.glock-casing{opacity:0;}
+    #ps-logo-container.shooting #ps-logo{-webkit-animation:glock-recoil .38s ease-out;animation:glock-recoil .38s ease-out;}
+    #ps-logo-container.shooting .glock-flash{-webkit-animation:glock-flash .28s ease-out;animation:glock-flash .28s ease-out;}
+    #ps-logo-container.shooting .glock-bullet{-webkit-animation:glock-bullet .30s ease-out;animation:glock-bullet .30s ease-out;}
+    #ps-logo-container.shooting .glock-casing{-webkit-animation:glock-casing .45s ease-out;animation:glock-casing .45s ease-out;}
+    @-webkit-keyframes glock-recoil{0%{-webkit-transform:translate(0,0) rotate(0deg);}25%{-webkit-transform:translate(-14px,2px) rotate(-3deg);}60%{-webkit-transform:translate(3px,0) rotate(.5deg);}100%{-webkit-transform:translate(0,0) rotate(0deg);}}
+    @keyframes glock-recoil{0%{transform:translate(0,0) rotate(0deg);}25%{transform:translate(-14px,2px) rotate(-3deg);}60%{transform:translate(3px,0) rotate(.5deg);}100%{transform:translate(0,0) rotate(0deg);}}
+    @-webkit-keyframes glock-flash{0%{opacity:0;}15%{opacity:1;}100%{opacity:0;}}
+    @keyframes glock-flash{0%{opacity:0;}15%{opacity:1;}100%{opacity:0;}}
+    @-webkit-keyframes glock-bullet{0%{opacity:0;-webkit-transform:translateX(0);}20%{opacity:1;}100%{opacity:0;-webkit-transform:translateX(90px);}}
+    @keyframes glock-bullet{0%{opacity:0;transform:translateX(0);}20%{opacity:1;}100%{opacity:0;transform:translateX(90px);}}
+    @-webkit-keyframes glock-casing{0%{opacity:0;-webkit-transform:translate(0,0);}25%{opacity:1;}100%{opacity:0;-webkit-transform:translate(26px,-46px);}}
+    @keyframes glock-casing{0%{opacity:0;transform:translate(0,0);}25%{opacity:1;}100%{opacity:0;transform:translate(26px,-46px);}}
     </style>
     <script>
         // Prevent "Theme Flash" by applying the href before the body renders
@@ -122,17 +138,44 @@
                 </button>
             </header>
 
-            <!-- PS Button -->
+            <!-- Glock Button -->
             <button id="pslogo">
                 <div id="ps-logo-container"
                     class="relative group cursor-pointer flex flex-col items-center justify-center p-8 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:scale-102">
-                    <svg id="ps-logo" class="w-32 h-32 transition-all duration-500 ease-in-out" viewBox="0 0 32 32"
-                        fill="#3B82F6" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729C11.0707 25.729 11.3102 25.729 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z">
-                            </path>
-                        </g>
+                    <svg id="ps-logo" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                    <linearGradient id="glockSlide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#94a3b8"/></linearGradient>
+                    <linearGradient id="glockFrame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbd5e1"/><stop offset="1" stop-color="#64748b"/></linearGradient>
+                    <radialGradient id="flashGlow"><stop offset="0" stop-color="#fbbf24" stop-opacity="0.55"/><stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+                    </defs>
+                    <g class="glock-gun">
+                    <path d="M158 182 Q138 190 134 212 L112 334 Q108 350 122 352 L200 352 Q214 350 216 336 L264 192 Q266 182 254 182 Z" fill="url(#glockFrame)" stroke="#475569" stroke-width="2"/>
+                    <path d="M158 182 Q132 175 118 152 L118 145 L160 145 L160 182 Z" fill="url(#glockFrame)" stroke="#475569" stroke-width="2"/>
+                    <path d="M122 145 L558 145 Q568 145 568 155 L568 172 Q568 182 558 182 L122 182 Q114 182 114 174 L114 153 Q114 145 122 145 Z" fill="url(#glockFrame)" stroke="#475569" stroke-width="2"/>
+                    <rect x="498" y="158" width="10" height="18" rx="2" fill="#334155"/><rect x="516" y="158" width="10" height="18" rx="2" fill="#334155"/><rect x="534" y="158" width="10" height="18" rx="2" fill="#334155"/>
+                    <rect x="300" y="150" width="34" height="10" rx="4" fill="#334155"/><rect x="350" y="152" width="26" height="8" rx="3" fill="#475569"/>
+                    <path fill-rule="evenodd" d="M300 182 L462 182 L462 206 C462 242 446 266 412 266 L362 266 C322 266 300 240 300 200 Z M326 182 L436 182 L436 202 C436 226 428 242 410 242 L366 242 C344 242 326 226 326 196 Z" fill="url(#glockFrame)" stroke="#475569" stroke-width="2"/>
+                    <path d="M356 182 Q346 212 356 244 Q361 254 368 246 Q362 216 372 182 Z" fill="#1e293b"/>
+                    <path d="M254 222 Q242 228 238 240 M244 262 Q232 268 228 280 M234 302 Q222 308 218 320" stroke="#475569" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <circle cx="170" cy="240" r="2.5" fill="#475569" opacity="0.6"/><circle cx="195" cy="235" r="2.5" fill="#475569" opacity="0.6"/><circle cx="160" cy="280" r="2.5" fill="#475569" opacity="0.6"/><circle cx="185" cy="275" r="2.5" fill="#475569" opacity="0.6"/><circle cx="150" cy="320" r="2.5" fill="#475569" opacity="0.6"/><circle cx="175" cy="315" r="2.5" fill="#475569" opacity="0.6"/>
+                    <circle cx="250" cy="205" r="6" fill="#334155"/>
+                    <path d="M106 350 L220 350 Q230 350 228 360 L226 368 Q225 374 216 374 L110 374 Q101 374 103 366 L105 358 Q106 350 106 350 Z" fill="#475569" stroke="#334155" stroke-width="2"/>
+                    <path d="M100 70 L600 70 Q622 70 622 88 L622 132 Q622 145 610 145 L100 145 Q88 145 88 133 L88 82 Q88 70 100 70 Z" fill="url(#glockSlide)" stroke="#475569" stroke-width="2"/>
+                    <path d="M108 56 L148 56 L148 70 L136 70 L136 62 L120 62 L120 70 L108 70 Z" fill="#334155"/>
+                    <rect x="578" y="58" width="18" height="14" rx="3" fill="#334155"/><circle cx="587" cy="65" r="3" fill="#3b82f6"/>
+                    <rect x="398" y="79" width="92" height="27" rx="5" fill="#475569"/><rect x="408" y="86" width="52" height="13" rx="3" fill="#94a3b8"/>
+                    <path d="M118 80 L108 140 M140 80 L130 140 M162 80 L152 140 M184 80 L174 140" stroke="#64748b" stroke-width="6" stroke-linecap="round" fill="none"/>
+                    <rect x="100" y="73" width="495" height="5" rx="2.5" fill="#ffffff" opacity="0.35"/>
+                    <rect x="612" y="97" width="12" height="25" rx="3" fill="#0f172a"/><ellipse cx="618" cy="109" rx="3" ry="7" fill="#000000"/>
+                    </g>
+                    <g class="glock-casing"><rect x="432" y="68" width="12" height="20" rx="2" fill="#fbbf24" stroke="#b45309" stroke-width="1"/></g>
+                    <g class="glock-bullet"><rect x="640" y="106" width="18" height="6" fill="#f59e0b" opacity="0.7"/><rect x="652" y="104" width="34" height="10" rx="5" fill="#fde68a"/></g>
+                    <g class="glock-flash">
+                    <circle cx="648" cy="109" r="70" fill="url(#flashGlow)"/>
+                    <polygon points="648,51 656,89 689,68 668,101 706,109 668,117 689,150 656,129 648,167 640,129 607,150 628,117 590,109 628,101 607,68 640,89" fill="#f59e0b" opacity="0.9"/>
+                    <polygon points="648,77 652,98 671,86 659,105 680,109 659,113 671,132 652,120 648,141 644,120 625,132 637,113 616,109 637,105 625,86 644,98" fill="#fde68a"/>
+                    <circle cx="648" cy="109" r="11" fill="#fffbeb"/>
+                    </g>
                     </svg>
                 </div>
             </button>
@@ -949,6 +992,27 @@
             } catch (e) {}
         }
         function setStatus(msg) { var cs = el("customStatus"); if (cs) cs.textContent = msg; }
+        function glockShoot() {
+            try {
+                var c = el("ps-logo-container");
+                if (!c) return;
+                if (c.classList) {
+                    c.classList.remove("shooting");
+                    void c.offsetWidth;
+                    c.classList.add("shooting");
+                } else {
+                    c.className = c.className.replace(/\bshooting\b/g, "");
+                    void c.offsetWidth;
+                    c.className += " shooting";
+                }
+                setTimeout(function () {
+                    try {
+                        if (c.classList) c.classList.remove("shooting");
+                        else c.className = c.className.replace(/\bshooting\b/g, "");
+                    } catch (e2) {}
+                }, 500);
+            } catch (e) {}
+        }
         function applyChain(fwStr) {
             try {
                 var fwNum = parseFloat(fwStr);
@@ -980,6 +1044,7 @@
             setStatus("Selected: " + picked);
         }
         function onStart() {
+            glockShoot();
             var det = detectedFw();
             try {
                 if (typeof isPS4Console === "function" && !isPS4Console() && !window.devMode) {
@@ -1034,6 +1099,11 @@
             else sel.onchange = onFwChange;
             if (btn.addEventListener) btn.addEventListener("click", onStart, false);
             else btn.onclick = onStart;
+            var glock = el("ps-logo-container");
+            if (glock) {
+                if (glock.addEventListener) glock.addEventListener("click", glockShoot, false);
+                else glock.onclick = glockShoot;
+            }
             mirrorTimer = setInterval(mirrorTick, 400);
             mirrorTick();
         }
